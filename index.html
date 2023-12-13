@@ -19,12 +19,45 @@
 
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
+<style>
+body, textarea {
+font-family: monospace;
+color: #ffb000;
+background-color: #111111;
+}
+            body{margin: 0px;padding: 0px;height: 99%;}
+            #terminal{top: 40%; left: 50%; transform: translate(-50%, -50%); position: absolute}
+            textarea#setter{left: -1000px;position: absolute; text-align: center}
+            .cursor{font-size: 20px;background-color: #ffb000;color: #ffb000;position: relative;opacity: 0.5;}
+            #terminal{margin: 8px;cursor: text;overflow: auto;}
+            #writer{font-family: cursor, courier;font-weight: bold; font-size: 24px}
+            #getter{margin: 5px;}
+
+@-webkit-keyframes blink {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@keyframes blink {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+</style>
+  
 </head>
 
 <body>
 
   <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+    <div id="terminal" onclick="$('setter').focus();">
+        <textarea type="text" id="setter" onkeydown="writeit(this, event);moveIt(this.value.length, event)" onkeyup="writeit(this, event)" onkeypress="writeit(this, event);"></textarea>
+        <div id="getter">
+            <span id="writer"></span><b class="cursor" id="cursor">B</b>
+        </div>
+    </div>
+
   <script src="js/app.js"></script>
 
 </body>
